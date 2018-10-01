@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>{{grant.client.client_name}} is requesting <strong>{{grant.request.scope}}</strong></p>
+
+<form action="" method="POST">
+    <label>
+        <input type="checkbox" name="confirm">
+        <span>I Agree</span><br>
+    </label>
+
+    {% if not user %}
+    <p>You haven't logged in. Log in with:</p>
+    <div>
+        <input type="text" name="username">
+    </div>
+    {% endif %}
+    <br>
+    <button>Submit</button>
+</form>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorize</title>
+</head>
+<body>
+  <h4>Username = {{user.id}}</h4>
+  <h4>Grant = {{grant.client.client_id}}</h4>
+
+</body>
+</html>

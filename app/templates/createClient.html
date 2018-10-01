@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="" method="POST">
+    <label>
+        <span>
+            Client Name
+        </span>
+        <input type="text" name="client_name">
+    </label>
+    <label>
+        <span>Client URI</span>
+        <input type="url" name="client_uri">
+    </label>
+    <label>
+        <span>Allowed Scope</span>
+        <select name="scope">
+            <option value="read">Read</option>
+            <option value="write">Write</option>
+        </select>
+    </label>
+    <label>
+        <span>Redirect URIs</span>
+        <textarea name="redirect_uri" cols="30" rows="10"></textarea>
+    </label>
+    <label>
+        <span>Allowed Grant Types</span>
+
+    </label>
+
+</form>
+{% endblock %}
