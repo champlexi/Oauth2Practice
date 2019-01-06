@@ -1,33 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
+   <h2>Client Registeration</h2>
 
-<form action="" method="POST">
-    <label>
-        <span>
-            Client Name
-        </span>
-        <input type="text" name="client_name">
-    </label>
-    <label>
-        <span>Client URI</span>
-        <input type="url" name="client_uri">
-    </label>
-    <label>
-        <span>Allowed Scope</span>
-        <select name="scope">
-            <option value="read">Read</option>
-            <option value="write">Write</option>
-        </select>
-    </label>
-    <label>
-        <span>Redirect URIs</span>
-        <textarea name="redirect_uri" cols="30" rows="10"></textarea>
-    </label>
-    <label>
-        <span>Allowed Grant Types</span>
+   <form action="" method="post" novalidate>
+       {{ form.hidden_tag() }}
+       <p>
+           {{form.client_name.label}}(<span style="color:red;">*</span>)<br>
+           {{form.client_name(size=50)}}<br>
+           {% for error in form.client_name.errors %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+       </p>
 
-    </label>
+       <p>
+           {{form.client_uri.label}}(<span style="color:red;">*</span>)<br>
+           {{form.client_uri(size=50)}}<br>
+           {% for error in form.client_uri.errors %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+       </p>
 
-</form>
+       <p>
+           {{form.scope.label}}(<span style="color:red;">*</span>)<br>
+           {{form.scope}}<br>
+           {% for error in form.scope.errors %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+       </p>
+
+       <p>
+           {{form.redirect_uri.label}}(<span style="color:red;">*</span>)<br>
+           {{form.redirect_uri(size=50)}}<br>
+           {% for error in form.redirect_uri.errors %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+       </p>
+
+        <p>
+           {{form.grant_type.label}}(<span style="color:red;">*</span>)<br>
+           {{form.grant_type}}<br>
+           {% for error in form.grant_type.errors %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+       </p>
+       <p>
+           {{form.token_endpoint_auth_method.label}}(<span style="color:red;">*</span>)<br>
+           {{form.token_endpoint_auth_method}}<br>
+           {% for error in form.token_endpoint_auth_method.errors %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+       </p>
+       <p>{{ form.submit() }}</p>
+   </form>
 {% endblock %}
